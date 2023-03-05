@@ -1,0 +1,2 @@
+_ = input()
+print(sum(int(a) % 100 for a in input().split()) % 100)
