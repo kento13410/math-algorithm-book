@@ -1,0 +1,13 @@
+n = int(input())
+isprime = [True] * (n+1)
+isprime[0], isprime[1] = False, False
+for p in range(2, n+1):
+  if not isprime[p]:
+    continue
+  q = 2*p
+  while q <= n:
+    isprime[q] = False
+    q += p
+for i in range(n+1):
+  if isprime[i]:
+    print(i, end=' ')
