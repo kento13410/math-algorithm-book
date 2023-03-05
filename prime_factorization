@@ -1,0 +1,23 @@
+#　素因数分解のdict作成-試し割法
+def new_value(prime_list, f):
+  if f in prime_list:
+    prime_list[f] += 1 
+  else:
+    prime_list[f] = 1
+  return prime_list
+    
+
+n = int(input())
+prime_list = {}
+while n % 2 == 0:
+  prime_list = new_value(prime_list, 2)
+  n //= 2
+f = 3
+while f * f <= n:
+  if n % f == 0:
+    prime_list = new_value(prime_list, f)
+    n //= f
+  else:
+    f += 2
+prime_list = new_value(prime_list, n)
+print(prime_list)
