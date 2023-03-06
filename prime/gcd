@@ -1,0 +1,8 @@
+# ユークリッドの互除法の互除法は再帰を使えば簡単に行える！
+def gcd(x, y):
+    if y == 0:
+        return x
+    else:
+        return gcd(y,x%y)
+
+print(gcd(12, 18))
