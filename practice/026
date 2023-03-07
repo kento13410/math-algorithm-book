@@ -1,0 +1,6 @@
+n = int(input())
+A, B = list(map(int, input().split())), list(map(int, input().split()))
+total = 0
+for i in range(n):
+  total += A[i]/3 + B[i]*2/3
+print(total)
