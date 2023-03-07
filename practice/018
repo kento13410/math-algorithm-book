@@ -1,0 +1,6 @@
+n = int(input())
+money = list(map(int, input().split()))
+cost_dict = {100:0, 200:0, 300:0, 400:0}
+for i in range(n):
+  cost_dict[money[i]] += 1
+print(cost_dict[100]*cost_dict[400]+cost_dict[200]*cost_dict[300])
