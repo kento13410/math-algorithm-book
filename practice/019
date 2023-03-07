@@ -1,0 +1,15 @@
+def nCk(n, k):
+  if n >= k:
+    total = 1
+    for i in range(1, k+1):
+      total *= (n-i+1)/i
+    return int(total)
+  else:
+    return 0
+ 
+n = int(input())
+color = list(map(int, input().split()))
+Dict = {1:0, 2:0, 3:0}
+for i in range(n):
+  Dict[color[i]] += 1
+print(nCk(Dict[1], 2) + nCk(Dict[2], 2) + nCk(Dict[3], 2))
