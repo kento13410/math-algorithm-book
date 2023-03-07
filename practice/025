@@ -1,0 +1,5 @@
+total = 0
+for _ in range(int(input())):
+  p, q = map(int, input().split())
+  total += q/p
+print(total)
