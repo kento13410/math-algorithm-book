@@ -1,0 +1,11 @@
+n = int(input())
+Dict = {}
+for i in range(1, 100000): # O(100000)
+  Dict[i] = 0
+for num in list(map(int, input().split())): # O(n)
+  Dict[num] += 1
+ans = 0
+for i in range(1, 50000): #O(50000)
+  ans += Dict[i]*Dict[100000-i]
+ans += Dict[50000]*(Dict[50000]-1)//2 # 番号50000のカードはnC2で求める
+print(ans)
