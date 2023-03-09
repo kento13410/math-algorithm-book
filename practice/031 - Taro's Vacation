@@ -1,0 +1,8 @@
+N = int(input())
+A = list(map(int, input().split()))
+dp = [0]*(N+1)
+# 二項間漸化式なのでa0, a1が必要
+dp[0], dp[1] = 0, A[0]
+for i in range(N-1):
+  dp[i+2] = max(dp[i+1], dp[i]+A[i+1])
+print(dp[N])
