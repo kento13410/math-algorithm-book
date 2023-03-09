@@ -1,0 +1,16 @@
+N, X = map(int, input().split())
+A = list(map(int, input().split()))
+A = sorted(A)
+left, right = 0, N-1
+while left <= right:
+  center = (left+right)//2
+  if A[center] < X:
+    # centerは無いからそれより大きいものの中にある→+1
+    left = center+1
+  elif A[center] > X:
+    # centerは無いからそれより小さいものの中にある→-1
+    right = center-1
+  else:
+    print('Yes')
+    exit()
+print('No')
