@@ -1,0 +1,15 @@
+N, W = map(int, input().split())
+w_list, v_list = [0], [0]
+for i in range(N):
+  w, v = map(int, input().split())
+  w_list.append(w)
+  v_list.append(v)
+ 
+# dp[i][j]: i番目までの荷物から、重さj以内で選んだ価値の最大値
+dp = [[0]*(W+1) for _ in range(N+1)]
+for i in range(N):
+  for j in range(W+1):
+    if j < w_list[i+1]:
+      dp[i+1][j] = dp[i][j]
+    else:
+      dp[i+1][j] = max(dp[i][j], v_list[i+1]+dp[i][j-w_list[i+1]])
