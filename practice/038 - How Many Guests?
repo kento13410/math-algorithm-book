@@ -1,6 +1,7 @@
 n, q = map(int, input().split())
 welcomeNum = list(map(int, input().split()))
 welcomeSum = [welcomeNum[0]]
+# S[n] = S[n-1]+A[n]とすることでO(N)で計算可
 for i in range(1, n):
   welcomeSum.append(welcomeSum[i-1]+welcomeNum[i])
 for _ in range(q):
