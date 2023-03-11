@@ -1,0 +1,11 @@
+n, q = map(int, input().split())
+welcomeNum = list(map(int, input().split()))
+welcomeSum = [welcomeNum[0]]
+for i in range(1, n):
+  welcomeSum.append(welcomeSum[i-1]+welcomeNum[i])
+for _ in range(q):
+  startAt, endAt = map(int, input().split())
+  if startAt == 1:
+    print(welcomeSum[endAt-1])
+  else:
+  	print(welcomeSum[endAt-1]-welcomeSum[startAt-2])
