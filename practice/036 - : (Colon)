@@ -1,0 +1,5 @@
+from math import sqrt, pi, cos
+
+A, B, H, M = map(int, input().split())
+θ = abs(H*2*pi/12 + M*2*pi/12/60 - M*2*pi/60)
+print(sqrt(A**2 + B**2 - 2*A*B*cos(θ)))
