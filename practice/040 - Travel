@@ -1,0 +1,22 @@
+n = int(input())
+A = list(map(int, input().split()))# A[0]~A[n-2]
+# 駅1から駅k（1<=k<=n）までの距離のリスト
+distance = [0] * (n-1)
+distance[0] = A[0]
+for i in range(1, n-1):
+  distance[i] = distance[i-1] + A[i]
+
+# 駅kから駅lまでの距離 1<=k<=l<=n
+def distanceDif(k, l):
+  if k >= 2:
+    return distance[l-2] - distance[k-2]
+  elif k == 1:
+    return distance[l-2]
+
+m = int(input())
+station = [int(input()) for _ in range(m)]
+total = 0
+for j in range(m-1):
+  k, l = min(station[j], station[j+1]), max(station[j], station[j+1])
+  total += abs(distanceDif(k, l))
+print(total)
