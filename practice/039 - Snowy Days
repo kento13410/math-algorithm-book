@@ -1,0 +1,15 @@
+n, q = map(int, input().split())
+snowAmountDif = [0]*(n-1)
+for i in range(q):
+  stArea, enArea, snow = map(int, input().split())
+  if stArea > 1:
+    snowAmountDif[stArea-2] += snow
+  if enArea < n:
+    snowAmountDif[enArea-1] -= snow
+for i in range(n-1):
+  if snowAmountDif[i] < 0:
+    print('>', end='')
+  elif snowAmountDif[i] == 0:
+    print('=', end='')
+  else:
+    print('<', end='')
