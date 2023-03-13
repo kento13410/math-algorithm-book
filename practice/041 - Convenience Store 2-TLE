@@ -1,0 +1,9 @@
+t = int(input())
+n = int(input())
+workerInTime = [0] * (t)
+for i in range(n):
+  startAt, endAt = map(int, input().split())
+  for j in range(startAt, endAt):
+    workerInTime[j] += 1
+for k in range(t):
+  print(workerInTime[k])
