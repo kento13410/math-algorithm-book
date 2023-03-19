@@ -1,0 +1,29 @@
+from math import sqrt, floor
+
+def addPrime(dic, num):
+    if num in dic.keys():
+        dic[num] += 1
+    else:
+        dic[num] = 1
+
+n = int(input())
+primes = [{} for _ in range(n + 1)]
+primes[1][1], primes[2][2] = 1, 1
+for i in range(1, n+1):
+    flg = True
+    for j in range(2, i):
+        if i % j == 0:
+            primes[i] = primes[i//j].copy()
+            addPrime(primes[i], j)
+            flg = False
+            break
+    if flg:
+      primes[i][i] = 1
+ans = 0
+for i in range(1, n+1):
+    divisors = 1
+    for j in primes[i].values():
+        divisors *= j+1
+    ans += i*divisors
+# 1は約数の個数1個だけなのでｰ1しておく
+print(ans-1)
