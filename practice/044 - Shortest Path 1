@@ -1,0 +1,24 @@
+from collections import deque
+
+num_of_vertex, num_of_edge = map(int, input().split())
+graph = [list() for _ in range(num_of_vertex + 1)]
+for i in range(num_of_edge):
+    ver1, ver2 = map(int, input().split())
+    graph[ver1].append(ver2)
+    graph[ver2].append(ver1)
+
+dist = [-1] * (num_of_vertex + 1)
+dist[1] = 0
+q = deque()
+q.append(1)
+
+while q:
+    ver = q.popleft()
+    for j in graph[ver]:
+        # 白色なら実行
+        if dist[j] == -1:
+            q.append(j)
+            dist[j] = dist[ver] + 1
+
+for i in range(1, num_of_vertex + 1):
+    print(dist[i])
