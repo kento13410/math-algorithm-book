@@ -1,0 +1,44 @@
+from collections import deque
+
+R, C = map(int, input().split())
+sy, sx = map(int, input().split())
+sy, sx = sy-1, sx-1
+gy, gx = map(int, input().split())
+gy, gx = gy-1, gx-1
+M = []
+for _ in range(R):
+    M.append(list(input()))
+
+dist = [[-1]*C for _ in range(R)]
+dist[sy][sx] = 0
+M[sy][sx] = '#'
+q = deque()
+q.append((sy, sx))
+
+while True:
+    pos = q.popleft()
+    posy, posx = pos[0], pos[1]
+    if M[posy-1][posx] == '.':
+        nexy, nexx = posy - 1, posx 
+        q.append((nexy, nexx))
+        dist[nexy][nexx] = dist[posy][posx] + 1
+        M[nexy][nexx] = '#'
+    if M[posy+1][posx] == '.':
+        nexy, nexx = posy + 1, posx 
+        q.append((nexy, nexx))
+        dist[nexy][nexx] = dist[posy][posx] + 1
+        M[nexy][nexx] = '#'
+    if M[posy][posx-1] == '.':
+        nexy, nexx = posy, posx-1
+        q.append((nexy, nexx))
+        dist[nexy][nexx] = dist[posy][posx] + 1
+        M[nexy][nexx] = '#'
+    if M[posy][posx+1] == '.':
+        nexy, nexx = posy, posx+1
+        q.append((nexy, nexx))
+        dist[nexy][nexx] = dist[posy][posx] + 1
+        M[nexy][nexx] = '#'
+    if not q:
+        break
+
+print(dist[gy][gx])
