@@ -1,0 +1,8 @@
+import math
+def comb(n, r):
+    return math.factorial(n) // (math.factorial(n - r) * math.factorial(r))
+ 
+const = 10**9+7
+x, y = map(int, input().split())
+n, k = x+y, x
+print(comb(n, k) % const)
