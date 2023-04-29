@@ -1,0 +1,19 @@
+def pro_matrices(X, Y, mod):
+    Z = [[0, 0], [0, 0]]
+    for i in range(2):
+        for j in range(2):
+            for k in range(2):
+                Z[i][j] += X[i][k] * Y[k][j]
+                Z[i][j] %= mod
+    return Z
+
+
+n = int(input())
+A = [[1, 1], [1, 0]]
+Ans = [[1, 0], [0, 1]]
+mod = 10 ** 9
+for i in range(60):
+    if (n - 1) & (1 << i) != 0:
+        Ans = pro_matrices(Ans, A, mod)
+    A = pro_matrices(A, A, mod)
+print(Ans[0][0])
